@@ -1,0 +1,9 @@
+[package]
+name = "sb-option"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Configuration option model for sssrs."
+
+[dependencies]
+sb-constant.workspace = true

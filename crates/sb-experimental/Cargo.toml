@@ -1,0 +1,12 @@
+[package]
+name = "sb-experimental"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Experimental features for sssrs."
+
+[dependencies]
+sb-constant.workspace = true
+sb-common.workspace = true
+sb-adapter.workspace = true
+sb-option.workspace = true

@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+
+env:
+  CARGO_TERM_COLOR: always
+  RUSTFLAGS: -D warnings
+
+jobs:
+  fmt:
+    name: fmt
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt
+      - name: cargo fmt --check
+        run: cargo fmt --all -- --check
+
+  clippy:
+    name: clippy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
+      - name: cargo clippy
+        run: cargo clippy --workspace --all-targets -- -D warnings
+
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: cargo build
+        run: cargo build --workspace --all-targets
+      - name: cargo test
+        run: cargo test --workspace
+
+  smoke:
+    name: smoke
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: cargo build --release
+        run: cargo build --release -p sb-cli
+      - name: version subcommand
+        run: |
+          output="$(./target/release/ssssrs version)"
+          echo "$output"
+          case "$output" in
+            *"ssssrs version"*) ;;
+            *) echo "unexpected version output" >&2; exit 1 ;;
+          esac
+      - name: check subcommand rejects missing config
+        run: |
+          if ./target/release/ssssrs check -c /nonexistent/config.json; then
+            echo "expected non-zero exit for missing config" >&2
+            exit 1
+          fi

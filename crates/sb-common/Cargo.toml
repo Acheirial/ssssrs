@@ -1,0 +1,9 @@
+[package]
+name = "sb-common"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Common utilities shared across sssrs crates."
+
+[dependencies]
+sb-constant.workspace = true

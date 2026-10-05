@@ -1,0 +1,11 @@
+[package]
+name = "sb-adapter"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Adapter traits for the sssrs core."
+
+[dependencies]
+sb-constant.workspace = true
+sb-common.workspace = true
+sb-option.workspace = true

@@ -1,0 +1,11 @@
+[package]
+name = "sb-transport"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Transport implementations for sssrs."
+
+[dependencies]
+sb-constant.workspace = true
+sb-common.workspace = true
+sb-adapter.workspace = true

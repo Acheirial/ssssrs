@@ -1,0 +1,13 @@
+[package]
+name = "sb-protocol"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Protocol implementations for sssrs."
+
+[dependencies]
+sb-constant.workspace = true
+sb-common.workspace = true
+sb-adapter.workspace = true
+sb-option.workspace = true
+sb-transport.workspace = true

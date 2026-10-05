@@ -1,0 +1,18 @@
+[package]
+name = "sb-core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Core runtime for sssrs."
+
+[dependencies]
+sb-constant.workspace = true
+sb-option.workspace = true
+sb-common.workspace = true
+sb-adapter.workspace = true
+sb-transport.workspace = true
+sb-protocol.workspace = true
+sb-v2ray.workspace = true
+sb-dns.workspace = true
+sb-route.workspace = true
+sb-experimental.workspace = true

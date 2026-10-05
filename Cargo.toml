@@ -1,0 +1,43 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/sb-constant",
+    "crates/sb-option",
+    "crates/sb-common",
+    "crates/sb-adapter",
+    "crates/sb-transport",
+    "crates/sb-protocol",
+    "crates/sb-v2ray",
+    "crates/sb-dns",
+    "crates/sb-route",
+    "crates/sb-experimental",
+    "crates/sb-core",
+    "crates/sb-cli",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "GPL-3.0-or-later"
+repository = "https://github.com/Acheirial/ssssrs"
+rust-version = "1.85"
+
+[workspace.dependencies]
+# Internal crates
+sb-constant = { path = "crates/sb-constant" }
+sb-option = { path = "crates/sb-option" }
+sb-common = { path = "crates/sb-common" }
+sb-adapter = { path = "crates/sb-adapter" }
+sb-transport = { path = "crates/sb-transport" }
+sb-protocol = { path = "crates/sb-protocol" }
+sb-v2ray = { path = "crates/sb-v2ray" }
+sb-dns = { path = "crates/sb-dns" }
+sb-route = { path = "crates/sb-route" }
+sb-experimental = { path = "crates/sb-experimental" }
+sb-core = { path = "crates/sb-core" }
+sb-cli = { path = "crates/sb-cli" }
+
+# External crates
+clap = { version = "4.5", features = ["derive"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"

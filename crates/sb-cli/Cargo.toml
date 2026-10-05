@@ -1,0 +1,18 @@
+[package]
+name = "sb-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Command line interface for sssrs."
+
+[dependencies]
+sb-constant.workspace = true
+sb-option.workspace = true
+sb-common.workspace = true
+sb-core.workspace = true
+clap.workspace = true
+serde_json.workspace = true
+
+[[bin]]
+name = "ssssrs"
+path = "src/main.rs"
